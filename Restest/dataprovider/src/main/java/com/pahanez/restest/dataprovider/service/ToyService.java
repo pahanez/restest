@@ -10,7 +10,7 @@ import java.util.List;
 public interface ToyService {
 
     void createToy(String name);
-    void deleteToy(long id);
+    void deleteToy(String id);
     List<Toy> getAllToys();
     void updateToy(Toy toy);
 

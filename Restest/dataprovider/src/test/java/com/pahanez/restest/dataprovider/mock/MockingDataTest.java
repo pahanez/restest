@@ -5,6 +5,7 @@ import com.pahanez.restest.dataprovider.BuildConfig;
 
 import junit.framework.Assert;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
@@ -21,10 +22,9 @@ public class MockingDataTest {
 
     private MockData mMockData;
 
-    @Test
-    public void testCreateMockData() {
+    @Before
+    public void setup() {
         mMockData = MockUtils.createMockData();
-
         Assert.assertTrue(mMockData.isInitialized());
     }
 

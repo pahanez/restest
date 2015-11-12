@@ -59,4 +59,16 @@ public class MockData {
     public List<Toy> getToyList() {
         return new ArrayList<>(mToysMap.values());
     }
+
+    public void addToy(Toy newToy) {
+        mToysMap.put(newToy.getId(), newToy);
+    }
+
+    public void removeToy(String id) {
+        mToysMap.remove(id);
+    }
+
+    public void updateToy(Toy updatedToy) {
+        mToysMap.put(updatedToy.getId(), updatedToy);
+    }
 }
