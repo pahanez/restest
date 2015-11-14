@@ -8,6 +8,8 @@ public class BaseEntity {
     protected String mId;
     protected long mChangedTime;
 
+    public BaseEntity() {}
+
     public BaseEntity (String id) {
         mId = id;
         mChangedTime = System.currentTimeMillis();

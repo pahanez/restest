@@ -8,6 +8,8 @@ public class Toy extends BaseEntity {
     private String mName;
     private boolean mIsRed;
 
+    public Toy() {}
+
     public Toy (String id, String name, boolean isRed) {
         super(id);
         mName = name;
