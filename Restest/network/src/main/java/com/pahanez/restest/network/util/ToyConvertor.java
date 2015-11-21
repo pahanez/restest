@@ -1,7 +1,5 @@
 package com.pahanez.restest.network.util;
 
-import android.support.annotation.NonNull;
-
 import com.pahanez.restest.data.entity.Toy;
 import com.pahanez.restest.network.entity.NetToy;
 
@@ -10,7 +8,7 @@ import com.pahanez.restest.network.entity.NetToy;
  */
 public class ToyConvertor { //todo generic ? from/to converter
 
-    public Toy from(@NonNull NetToy netToy) {
+    public Toy from( NetToy netToy) {
         Toy toy = new Toy();
         toy.setId(netToy.getId());
         toy.setName(netToy.getName());
@@ -19,7 +17,7 @@ public class ToyConvertor { //todo generic ? from/to converter
         return toy;
     }
 
-    public NetToy from(@NonNull Toy toy) {
+    public NetToy from(Toy toy) {
         NetToy netToy = new NetToy();
         netToy.setId(toy.getId());
         netToy.setName(toy.getName());

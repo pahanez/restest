@@ -1,1 +1,1 @@
-include ':app', ':data', ':dataprovider', ':network'
+include ':app', ':data', ':dataprovider', ':network', ':ToysEndpoint'

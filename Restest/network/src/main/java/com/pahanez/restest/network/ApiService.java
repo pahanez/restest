@@ -1,9 +1,8 @@
 package com.pahanez.restest.network;
 
-import android.support.annotation.IntDef;
-
 import com.pahanez.restest.network.api.ToyApi;
 import com.pahanez.restest.network.util.Constants;
+import com.squareup.okhttp.OkHttpClient;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -17,7 +16,6 @@ import retrofit.Retrofit;
 public class ApiService {
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({MOCKABLE_API, GOOGLE_ENDPOINTS_API})
     public @interface ApiType {}
 
     public static final int MOCKABLE_API = 500;
@@ -36,16 +34,21 @@ public class ApiService {
                     mUrl = Constants.MOCKABLE_IO_API_URL;
                     break;
                 case GOOGLE_ENDPOINTS_API:
-
+                    mUrl = "http://localhost:8080/_ah/api/myApi/v1/";
                     break;
             }
             return this;
         }
 
         public ApiService build() {
+            OkHttpClient okHttpClient = new OkHttpClient();
+//            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//            okHttpClient.interceptors().add(interceptor);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(mUrl)
+                    .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
