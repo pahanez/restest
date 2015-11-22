@@ -5,5 +5,5 @@ package com.pahanez.restest.network.callback;
  */
 public interface CompletionCallback {
     void onSuccess();
-    void onError();
+    void onError(ErrorType errorType);
 }
