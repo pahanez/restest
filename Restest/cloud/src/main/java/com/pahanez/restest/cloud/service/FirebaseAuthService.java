@@ -38,22 +38,57 @@ public class FirebaseAuthService implements AuthService {
     }
 
     @Override
-    public void signup(String cred1, String cred2, CompletionCallback callback) {
+    public void signup(String cred1, String cred2, final CompletionCallback callback) {
         mFirebase.createUser(cred1, cred2, new Firebase.ResultHandler() {
             @Override
             public void onSuccess() {
-
+                callback.onSuccess();
             }
 
             @Override
             public void onError(FirebaseError firebaseError) {
+                callback.onError(ErrorType.SIGNUP);
             }
         });
-
     }
 
     @Override
-    public void signout(CompletionCallback callback) {
-        mFirebase.unauth();
+    public void signout(final CompletionCallback callback) {
+        if (mFirebase.getAuth() == null) {
+            //not logged in
+            callback.onError(ErrorType.UNAUTH);
+            return;
+        }
+
+        mFirebase.unauth(new Firebase.CompletionListener() {
+            @Override
+            public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                if (firebaseError != null) {
+                    callback.onError(ErrorType.UNAUTH);
+                } else {
+                    callback.onSuccess();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void removeUser(String cred1, String cred2, final CompletionCallback callback) {
+        mFirebase.removeUser(cred1, cred2, new Firebase.ResultHandler() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                callback.onError(ErrorType.REMOVEUSER);
+            }
+        });
+    }
+
+    @Override
+    public boolean isLoggedIn() {
+        return mFirebase.getAuth() != null;
     }
 }
