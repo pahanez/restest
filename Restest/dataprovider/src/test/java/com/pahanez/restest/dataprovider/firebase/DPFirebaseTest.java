@@ -1,30 +1,11 @@
 package com.pahanez.restest.dataprovider.firebase;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.firebase.client.AuthData;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-import com.pahanez.restest.data.entity.Toy;
 import com.pahanez.restest.dataprovider.BaseTest;
-import com.pahanez.restest.network.CloudProvider;
-import com.pahanez.restest.network.util.Constants;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.shadows.ShadowApplication;
-
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by pindziukou on 18/11/15.
  */
-public class DPFirebaseTest extends BaseTest {
+public class DPFirebaseTest extends BaseTest {/*
 
     private CloudProvider mCloudProvider;
     private static final String EMAIL = "roboadmin@robo.cop";
@@ -133,4 +114,5 @@ public class DPFirebaseTest extends BaseTest {
             e.printStackTrace();
         }
     }
+    */
 }

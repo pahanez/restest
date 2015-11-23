@@ -1,1 +1,1 @@
-include ':app', ':data', ':dataprovider', ':network', ':ToysEndpoint'
+include ':app', ':data', ':dataprovider', ':ToysEndpoint', ':firebase', ':customjavalib', ':cloud'

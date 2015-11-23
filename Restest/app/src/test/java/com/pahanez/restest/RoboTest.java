@@ -1,14 +1,7 @@
 package com.pahanez.restest;
 
-import android.content.Context;
-
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 /**
@@ -16,7 +9,7 @@ import org.robolectric.annotation.Config;
  */
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 16)
-public class RoboTest {
+public class RoboTest {/*
 
     @Test
     public void test() {
@@ -29,7 +22,7 @@ public class RoboTest {
             public void onComplete(FirebaseError firebaseError, Firebase firebase) {
                 System.out.println("1err" + firebaseError);
             }
-        });*/
+        });
         firebase.child("core").setValue("wow", new Firebase.CompletionListener() {
             @Override
             public void onComplete(FirebaseError firebaseError, Firebase firebase) {
@@ -52,4 +45,5 @@ public class RoboTest {
 
 
     }
+*/
 }

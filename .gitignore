@@ -2,6 +2,7 @@
 *.apk
 *.ap_
 *.iml
+*.hprof
 
 # Files for the Dalvik VM
 *.dex
