@@ -32,6 +32,7 @@ public class FirebaseItemServiceTest {
     private static final String TAG =  FirebaseItemServiceTest.class.getSimpleName();
     private static final String OK_EMAIL = "roboadmin@robo.cop";
     private static final String OK_PSWD = "robopass";
+    private static final String TOY_TO_UPDATE_ID = "toy_to_update_id";
     private static final int DEFAULT_SLEEP_SEC = 3;
 
     private CloudProvider mCloudProvider;
@@ -106,10 +107,49 @@ public class FirebaseItemServiceTest {
         sleep();
 
         Mockito.verify(getAllToysCallback, Mockito.times(1)).onSuccess((List<Toy>) Mockito.notNull());
+    }
+
+    @Test
+    public void testUpdateItem() {
+        auth();
+        final String nameToUpdate = UUID.randomUUID().toString();
+        ToyService toyService = getToyService();
+
+        Toy toy = generateToy();
+        toy.setId(TOY_TO_UPDATE_ID);
+        toy.setName(nameToUpdate);
+        CompletionCallback updateToyCallback = createCompletionCallback();
+        getToyService().updateToy(toy, updateToyCallback);
+        sleep();
+        Mockito.verify(updateToyCallback).onSuccess();
 
 
 
+        toyService.getAllToys(new CompletionCallbackExtended<List<Toy>>() {
+            @Override
+            public void onSuccess() {
+                Assert.fail();
+            }
 
+            @Override
+            public void onError(ErrorType errorType) {
+                Assert.fail();
+            }
+
+            @Override
+            public void onSuccess(List<Toy> result) {
+                boolean contains = false;
+
+                for(Toy toy : result) {
+                    if(TOY_TO_UPDATE_ID.equals(toy.getId())) {
+                        contains = true;
+                        Assert.assertEquals(nameToUpdate, toy.getName());
+                    }
+                }
+                Assert.assertTrue(contains);
+            }
+        });
+        sleep();
     }
 
     private void createToy(ToyService toyService) {

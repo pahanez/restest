@@ -12,9 +12,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by pindziukou on 23/11/15.
  */
-public class FirebaseTest {
+public class RAWFirebaseTest {
 
-    public static final String TAG = FirebaseTest.class.getSimpleName();
+    public static final String TAG = RAWFirebaseTest.class.getSimpleName();
 
     private Firebase mFirebase;
 
