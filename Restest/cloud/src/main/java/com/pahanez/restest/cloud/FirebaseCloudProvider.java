@@ -4,6 +4,7 @@ package com.pahanez.restest.cloud;
 import com.firebase.client.Firebase;
 import com.pahanez.restest.cloud.service.AuthService;
 import com.pahanez.restest.cloud.service.FirebaseAuthService;
+import com.pahanez.restest.cloud.service.FirebaseToyService;
 import com.pahanez.restest.cloud.service.ToyService;
 import com.pahanez.restest.cloud.util.CloudInitializer;
 import com.pahanez.restest.cloud.util.Constants;
@@ -23,7 +24,7 @@ public class FirebaseCloudProvider implements CloudProvider {
 
     @Override
     public ToyService getToyService() {
-        return null;
+        return new FirebaseToyService(mFirebase);
     }
 
     @Override
