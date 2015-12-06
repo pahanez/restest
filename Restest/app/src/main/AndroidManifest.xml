@@ -21,6 +21,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
+        <activity android:name=".gc.GcTestActivity1" />
+        <activity android:name=".gc.GcTestActivity2" />
+
+
+
+        <activity android:name=".activity.AuthActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Restest</string>
     <string name="action_settings">Settings</string>
+    <string name="signin">Signin</string>
+    <string name="signup">Signup</string>
+    <string name="helper">Helper</string>
 </resources>

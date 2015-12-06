@@ -1,17 +1,19 @@
 package com.pahanez.restest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.pahanez.restest.gc.GcTestActivity1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 //                new Handler(Looper.getMainLooper()).obtainMessage(21).sendToTarget();
 //                mHandler.obtainMessage(20).sendToTarget();
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                android.util.Log.e("p37td8", "on fab clicked");
+                startActivity(new Intent(MainActivity.this, GcTestActivity1.class));
             }
         });
     }
