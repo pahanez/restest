@@ -1,15 +1,21 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
 
     defaultConfig {
-        applicationId "com.pahanez.restest"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+
+        applicationId globalConfiguration.getAt("androidApplicationId")
+        versionCode globalConfiguration.getAt("androidVersionCode")
+        versionName globalConfiguration.getAt("androidVersionName")
+        testInstrumentationRunner globalConfiguration.getAt("testInstrumentationRunner")
+        testApplicationId globalConfiguration.getAt("testApplicationId")
     }
     buildTypes {
         release {
@@ -17,15 +23,43 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-//    compile project(path: ':ToysEndpoint', configuration: 'android-endpoints')
-    testCompile 'org.robolectric:robolectric:3.0'
-//    compile 'com.android.support:appcompat-v7:23.0.1'
+    def applicationDependencies = rootProject.ext.appDependencies
+    def applicationTestDependencies = rootProject.ext.appTestDependencies
 
-    compile 'com.android.support:design:23.0.1'
+    apt applicationDependencies.daggerCompiler
+
+    compile applicationDependencies.dagger
+    compile applicationDependencies.butterKnife
+    compile applicationDependencies.recyclerView
+    compile applicationDependencies.rxJava
+    compile applicationDependencies.rxAndroid
+    compile applicationDependencies.appcompat
+    compile applicationDependencies.supportv4
+    compile applicationDependencies.design
+    provided applicationDependencies.javaxAnnotation
+
+    androidTestCompile applicationTestDependencies.mockito
+    androidTestCompile applicationTestDependencies.dexmaker
+    androidTestCompile applicationTestDependencies.dexmakerMockito
+    androidTestCompile applicationTestDependencies.espresso
+    androidTestCompile applicationTestDependencies.testingSupportLib
+
+
 
 }
