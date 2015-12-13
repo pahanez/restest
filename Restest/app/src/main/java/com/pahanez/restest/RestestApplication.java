@@ -1,6 +1,8 @@
 package com.pahanez.restest;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.pahanez.restest.devutil.DeveloperSettings;
 import com.pahanez.restest.di.ApplicationModule;
@@ -40,5 +42,15 @@ public class RestestApplication extends Application {
 
     public ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
+    }
+
+    @NonNull
+    public void wtch(@NonNull Object object) {
+        mApplicationComponent.leakCanaryProxy().watch(object);
+    }
+
+    @NonNull
+    public static RestestApplication get(@NonNull Context context) {
+        return (RestestApplication) context.getApplicationContext();
     }
 }

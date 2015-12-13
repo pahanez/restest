@@ -18,9 +18,11 @@ package com.pahanez.restest.di.component;
 import android.support.annotation.NonNull;
 
 import com.pahanez.restest.RestestApplication;
+import com.pahanez.restest.devutil.LeakCanaryProxy;
 import com.pahanez.restest.di.ApplicationModule;
 import com.pahanez.restest.di.module.DevelopersModule;
 import com.pahanez.restest.di.module.NetworkModule;
+import com.pahanez.restest.view.activity.BaseActivity;
 
 import javax.inject.Singleton;
 
@@ -37,4 +39,9 @@ import dagger.Component;
         })
 public interface ApplicationComponent {
     void inject(@NonNull RestestApplication restestApplication);
+    void inject(@NonNull BaseActivity baseActivity);
+
+    // Provide LeakCanary without injection to leave
+    @NonNull
+    LeakCanaryProxy leakCanaryProxy();
 }
