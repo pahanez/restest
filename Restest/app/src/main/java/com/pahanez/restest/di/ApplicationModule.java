@@ -15,7 +15,7 @@ import dagger.Provides;
 
 /**
  * Dagger module for application level dependencies.
- * Live during the application lifecycle.
+ * Live during the mApplication lifecycle.
  * */
 @Module
 public class ApplicationModule {
@@ -23,20 +23,20 @@ public class ApplicationModule {
     public static final String MAIN_THREAD_HANDLER = "main_thread_handler";
 
     @NonNull
-    private final RestestApplication application;
+    private final RestestApplication mApplication;
 
     public ApplicationModule(@NonNull RestestApplication application) {
-        this.application = application;
+        this.mApplication = application;
     }
 
     @Provides @NonNull @Singleton
     Context provideApplicationContext() {
-        return this.application;
+        return this.mApplication;
     }
 
     @Provides @NonNull @Singleton
     RestestApplication provideRestestApplication() {
-        return this.application;
+        return this.mApplication;
     }
 
     @Provides @NonNull @Named(MAIN_THREAD_HANDLER) @Singleton

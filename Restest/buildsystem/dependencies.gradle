@@ -20,8 +20,10 @@ ext {
   rxAndroidVersion = '1.0.1'
   javaxAnnotationVersion = '1.0'
   gsonVersion = '2.3'
-  okHttpVersion = '2.5.0'
+  okHttpVersion = '2.6.0'
   androidAnnotationsVersion = '21.0.3'
+  leakCanaryVersion = '1.3.1'
+  stethoVersion = '1.2.0'
 
   //Testing
   robolectricVersion = '3.0'
@@ -43,6 +45,12 @@ ext {
       appcompat:          "com.android.support:appcompat-v7:${androidSupportVersion}",
       supportv4:          "com.android.support:support-v4:${androidSupportVersion}",
       design:             "com.android.support:design:${androidSupportVersion}",
+      okHttp:             "com.squareup.okhttp:okhttp:${okHttpVersion}",
+      okHttpLoggingInterceptor:             "com.squareup.okhttp:logging-interceptor:${okHttpVersion}",
+      //dev
+      stetho:             "com.facebook.stetho:stetho:${stethoVersion}",
+      stethoOkHttp:             "com.facebook.stetho:stetho-okhttp:${stethoVersion}",
+      leakcanary:         "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
   ]
 
   appTestDependencies = [

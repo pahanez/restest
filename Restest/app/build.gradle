@@ -52,6 +52,8 @@ dependencies {
     compile applicationDependencies.appcompat
     compile applicationDependencies.supportv4
     compile applicationDependencies.design
+    compile applicationDependencies.okHttp
+    compile applicationDependencies.okHttpLoggingInterceptor
     provided applicationDependencies.javaxAnnotation
 
     androidTestCompile applicationTestDependencies.mockito
@@ -60,6 +62,15 @@ dependencies {
     androidTestCompile applicationTestDependencies.espresso
     androidTestCompile applicationTestDependencies.testingSupportLib
 
+    testCompile applicationTestDependencies.mockito
+    testCompile applicationTestDependencies.dexmaker
+    testCompile applicationTestDependencies.dexmakerMockito
+    testCompile applicationTestDependencies.espresso
+    testCompile applicationTestDependencies.testingSupportLib
+
+    compile applicationDependencies.leakcanary
+    compile applicationDependencies.stetho
+    compile applicationDependencies.stethoOkHttp
 
 
 }
