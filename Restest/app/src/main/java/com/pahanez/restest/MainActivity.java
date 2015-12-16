@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.pahanez.restest.gc.GcTestActivity1;
+import com.pahanez.restest.view.activity.RxActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 android.util.Log.e("p37td8", "on fab clicked");
-                startActivity(new Intent(MainActivity.this, GcTestActivity1.class));
+                startActivity(new Intent(MainActivity.this, RxActivity.class));
             }
         });
     }
